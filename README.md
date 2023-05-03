@@ -8,5 +8,69 @@ Next we show the steps to follow to send the Voicemail with the transcription of
 - Have root access to the VitalPBX Server
 
 ## Pre-requisites
+Install Required Dependencies for Google Cloud ClI
+<pre>
+apt install curl apt-transport-https gnupg jq sox flac dos2unix gnupg
+</pre>
 
+## Install Google Cloud CLI
+You can acquire the public Key for Google Cloud by executing the following command.
+<pre>
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+</pre>
 
+Use the following command to add the gcloud CLI distribution URI as a packet source.
+<pre>
+echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+</pre>
+
+Run the following command to update and install the gcloud CLI.
+<pre>
+apt-get update && sudo apt-get install google-cloud-cli
+</pre>
+
+Use the following command to initialize the gcloud CLI.
+<pre>
+gcloud init
+</pre>
+
+Now we are going to authorize the Asterisk user to also have access to Google Cloud.
+We change user in the Linux console.
+<pre>
+su -s /bin/bash asterisk
+</pre>
+
+We now request access to Google Cloud. And we do the same procedure as in the previous step
+<pre>
+gcloud auth login
+</pre>
+
+Finally we do the test and it should give us the same result as before.
+<pre>
+gcloud ml speech recognize 'gs://cloud-samples-tests/speech/brooklyn.flac' --language-code='en-US'
+</pre>
+
+Now we download the sendmail-gcloud file and copy it to /usr/sbin/
+<pre>
+wget https://raw.githubusercontent.com/VitalPBX/vitalpbx-voicemail-transcription-google-cloud/main/sendmail-gcloud /usr/sbin/
+</pre>
+
+Later we create the file voicemail__60-general.conf in /etc/Asterisk/vitalpbx/ with the following content.
+<pre>
+nano /etc/asterisk/vitalpbx/voicemail__60-general.conf 
+</pre>
+
+Content
+<pre>
+[general](+)
+;You override the default program to send e-mail to use the script
+mailcmd=/usr/sbin/sendmail-gcloud
+</pre>
+
+Now we assign the corresponding permissions
+<pre>
+cd /usr/sbin/
+chown asterisk:asterisk sendmail-gcloud
+chmod 744 sendmail-gcloud
+chmod 777 /usr/bin/dos2uni
+</pre>
