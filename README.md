@@ -83,3 +83,5 @@ asterisk -rx"module reload app_voicemail.so"
 Overall, voicemail transcription can be a useful tool for anyone who receives voicemails regularly, and it can provide several benefits, including time savings, improved accessibility, increased accuracy, and convenience.
 
 For more details about the implementation of Google Cloud VoiceMail Transcription, visit the following Blog:
+
+https://vitalpbx.com/blog/vitalpbx-voicemail-transcription-with-google/
