@@ -40,7 +40,7 @@ We change user in the Linux console.
 su -s /bin/bash asterisk
 </pre>
 
-We now request access to Google Cloud. And we do the same procedure as in the previous step
+We now request access to Google Cloud.
 <pre>
 gcloud auth login
 </pre>
