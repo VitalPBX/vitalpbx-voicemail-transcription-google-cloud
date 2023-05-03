@@ -74,3 +74,12 @@ chown asterisk:asterisk sendmail-gcloud
 chmod 744 sendmail-gcloud
 chmod 777 /usr/bin/dos2uni
 </pre>
+
+Finally we do a reload of the voicemail module
+<pre>
+asterisk -rx"module reload app_voicemail.so"
+</pre>
+
+Overall, voicemail transcription can be a useful tool for anyone who receives voicemails regularly, and it can provide several benefits, including time savings, improved accessibility, increased accuracy, and convenience.
+
+For more details about the implementation of Google Cloud VoiceMail Transcription, visit the following Blog:
