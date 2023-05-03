@@ -1,2 +1,2 @@
-# vitalpbx-voicemail-transcription-google-cloud
-Send the Voicemail with a transcription of content
+# Envía el Voicemail con una transcripción de contenido con Google Cloud
+
