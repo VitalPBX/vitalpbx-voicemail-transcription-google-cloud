@@ -72,7 +72,7 @@ Now we assign the corresponding permissions
 cd /usr/sbin/
 chown asterisk:asterisk sendmail-gcloud
 chmod 744 sendmail-gcloud
-chmod 777 /usr/bin/dos2uni
+chmod 777 /usr/bin/dos2unix
 </pre>
 
 Finally we do a reload of the voicemail module
