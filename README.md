@@ -7,7 +7,6 @@ Next we show the steps to follow to send the Voicemail with the transcription of
 - Within console.cloud.google.com search for Cloud Speech-to-Text API and enable it
 - Have root access to the VitalPBX Server
 
-## Pre-requisites
 Install Required Dependencies for Google Cloud ClI
 <pre>
 apt install curl apt-transport-https gnupg jq sox flac dos2unix gnupg
